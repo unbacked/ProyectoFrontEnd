@@ -1,0 +1,162 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@inventoryItemHeight: 150px;
+@inventoryItemWidth: 150px;
+@mixResultHeight: 300px;
+@mixResultWidth: 300px;
+@ingredientHeight: 100px;
+@ingredientWidth: 100px;
+@gameZoneHeight: 720px;
+@inventoryColor: rgb(151, 81, 14);
+@mixColor: black;
+@recipeColor: white;
+@desktop: ~"only screen and (min-width: 960px) and (max-width: 1199px)";
+@tablet: ~"only screen and (min-width: 720px) and (max-width: 959px)";
+@cellPhone: ~"only screen and (max-width: 719px)";
+@lessThanTablet: ~"only screen and (max-width: 959px)";
+@methodBtnWidth: 80px;
+
+.container {
+    padding: 0;
+}
+
+#inventory {
+    padding: 0;
+    margin: 0;
+
+    #inventoryItems {
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        .inventoryItem {
+            height: @inventoryItemHeight;
+            min-width: @inventoryItemWidth;
+            margin: 20px;
+            background-color: aqua;
+        }
+    }
+}
+
+#testZone {
+    margin: 0;
+    padding: 0;
+
+    #mixZone {
+        background-color: black;
+        padding: 0;
+
+        h4 {
+            color: white;
+        }
+
+        #baseZone {
+            background-color: darkslategray;
+            padding: 0;
+        }
+
+        #sodaZone {
+            background-color: lightslategray;
+            padding: 0;
+        }
+
+        #decorationZone {
+            background-color: lightslategray;
+            padding: 0;
+        }
+
+        #methodZone {
+            background-color: darkslategray;
+            padding: 10px 0 10px 0;
+            overflow: hidden;
+
+            button {
+                margin: 10px;
+                min-width: @methodBtnWidth;
+                max-width: @methodBtnWidth;
+            }
+        }
+
+        #glassZone {
+            background-color: darkslategray;
+            padding: 0;
+        }
+
+        #mixResult {
+            height: @mixResultHeight;
+            width: @mixResultWidth;
+            background-color: darkslategray;
+            margin: 25px;
+        }
+    }
+
+    #testPanel {
+        background-color: darkgray;
+    }
+}
+
+.ingredient {
+    min-height: @ingredientHeight;
+    min-width: @ingredientWidth;
+    max-height: @ingredientHeight;
+    max-width: @ingredientWidth;
+    overflow: hidden;
+    /*background-color: aqua;*/
+    margin: 10px;
+    border: 2px dashed white;
+    color: white;
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.container {
+    padding: 0;
+
+    @media @lessThanTablet {
+        width: 100%;
+       
+    }
+}
+
+#gameZone {
+    padding: 0;
+    margin: 0;
+
+    #inventory {
+        height: @gameZoneHeight;
+        background-color: @inventoryColor;
+
+        @media @lessThanTablet {
+            height: auto;
+            background-color: yellow;
+        }
+    }
+
+    #mix {
+        height: @gameZoneHeight;
+        background-color: @mixColor;
+    }
+
+    #recipe {
+        height: @gameZoneHeight;
+        background-color: @recipeColor;
+    }
+}*/
