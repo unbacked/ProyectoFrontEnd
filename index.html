@@ -6,20 +6,131 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Proyecto Front End</title>
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" href="css/all.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"> -->
     <!-- MDBOOTSTRAP LINKS -->
-    <link rel="stylesheet" href="CSS/MDB/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/MDB/mdb.min.css">
+    <link rel="stylesheet" href="css/mdb/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mdb/mdb.min.css">
     <!-- USER CSS -->
 </head>
-<body>
+<body class="elegant-color">
     <!-- comment attached al Hello World -->
-    <h1>Hello World</h1>
-    <!-- MDBOOTSTRAP JS -->
-    <script src="JS/MDB/jquery-3.3.1.min.js"></script>
-    <script src="JS/MDB/popper.min.js"></script>
-    <script src="JS/MDB/bootstrap.min.js"></script>
-    <script src="JS/MDB/mdb.min.js"></script>
-    <!-- USER SCRIPS -->
+    <!-- BODY -->
+    <div class="container-fluid p-0">
+        <!-- BARRA -->
+        <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                
+            </ul>
+            <!-- Links -->
+            <form class="form-inline">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                </div>
+            </form>
+        </div>
+        <!-- Collapsible content -->
+    </nav>
+    <!--/.Navbar-->
+
+    <div class="container-fluid">
+        <h1 class="text-center" style="color:#ffffff">Welcome to the Cocktail's World</h1>
+    </div>
+    <!-- CARRUSEL -->
+    <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- INDICADORES -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+        </ol>
+        <!-- /.INDICADORES -->
+        <!-- IMAGENES -->
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <!-- CONTORLES DE MASCARA -->
+                <div class="view">
+                    <img class="d-block w-100" src="img/bar3.jpg" alt="First slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Welcome to the Bartender's World.</h3>
+                    <p>A massive world, where you could have a lot of opportunities</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <!-- CONTROLES DE MASCARA -->
+                <div class="view">
+                    <img class="d-block w-100" src="img/bar.jpg" alt="Second slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Practice with real equipment.</h3>
+                    <p>Use the best material to do the best.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <!-- CONTROLES DE MASCARA -->    
+                <div class="view">
+                    <img class="d-block w-100" src="img/bar2.jpg" alt="Third slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+                <div class="carousel-caption">
+                    <h3 class="h3-responsive">Learn how to do amazings cocktails.</h3>
+                    <p>Use the official recipes from IBA.</p>
+                </div>
+            </div>
+        </div>
+        <!-- IMAGENES -->
+        <!-- CONTROLES DE CARRUSEL-->
+        <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.CONTROLES DE CARRUSEL -->
+    </div>
+    <!-- /.CARRUSEL -->
+</div>
+<!-- MDBOOTSTRAP JS -->
+<script src="js/mdb/jquery-3.3.1.min.js"></script>
+<script src="js/mdb/popper.min.js"></script>
+<script src="js/mdb/bootstrap.min.js"></script>
+<script src="js/mdb/mdb.min.js"></script>
+<!-- USER SCRIPS -->
 </body>
 </html>
