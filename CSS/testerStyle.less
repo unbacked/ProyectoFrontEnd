@@ -7,10 +7,10 @@ body {
     padding: 0;
 }
 
-@inventoryItemHeight: 150px;
-@inventoryItemWidth: 150px;
-@mixResultHeight: 300px;
-@mixResultWidth: 300px;
+@inventoryItemHeight: 100px;
+@inventoryItemWidth: 100px;
+/*@mixResultHeight: 300px;
+@mixResultWidth: 300px;*/
 @ingredientHeight: 100px;
 @ingredientWidth: 100px;
 @gameZoneHeight: 720px;
@@ -38,8 +38,21 @@ body {
         .inventoryItem {
             height: @inventoryItemHeight;
             min-width: @inventoryItemWidth;
+            max-width: @inventoryItemWidth;
             margin: 20px;
-            background-color: aqua;
+            display: block;
+            /*background-color: aqua;*/
+
+            img {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            p {
+                font-size: 0.75rem;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }
@@ -88,12 +101,12 @@ body {
             padding: 0;
         }
 
-        #mixResult {
+        /*#mixResult {
             height: @mixResultHeight;
             width: @mixResultWidth;
             background-color: darkslategray;
             margin: 25px;
-        }
+        }*/
     }
 
     #testPanel {

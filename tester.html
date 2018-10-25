@@ -51,19 +51,39 @@
         <!-- inventory -->
         <div id="inventory" class="row">
             <div class="col-12 d-flex">
-                <select name="inventoryObjects" class="mx-auto mt-4">
+                <select onchange="filter()" name="inventoryObjects" class="mx-auto mt-4">
                     <option value="all">Todos</option>
-                    <option value="bases">Bases alcohólicas</option>
-                    <option value="sodas">Acompañantes</option>
-                    <option value="decorations">Decoraciones</option>
-                    <option value="glasses">Cristalería</option>
+                    <option value="base">Bases alcohólicas</option>
+                    <option value="addition">Acompañantes</option>
+                    <option value="ornament">Decoraciones</option>
+                    <option value="crystal">Cristalería</option>
                 </select>
             </div>
             <div id="inventoryItems" class="col-12 d-flex">
-                <div class="inventoryItem">item 1</div>
-                <div class="inventoryItem">item 2</div>
-                <div class="inventoryItem">item 3</div>
-                <div class="inventoryItem">item 4</div>
+                <div id="rumBottle" class="inventoryItem text-center base">
+                    <div class="col-12 pt-1">
+                        <img src="IMG/bases/rumCacique.svg" alt="rum bottle" />
+                    </div>
+                    <p>Ron</p>
+                </div>
+                <div id="lemonSlice" class="inventoryItem text-center ornament">
+                    <div class="col-12 pt-1">
+                        <img src="IMG/ornaments/lemonSlice.svg" alt="lemon slice" />
+                    </div>
+                    <p>Limón</p>
+                </div>
+                <div id="coke" class="inventoryItem text-center addition">
+                    <div class="col-12 pt-1">
+                        <img src="IMG/additions/coke.svg" alt="coke" />
+                    </div>
+                    <p>Coca-cola</p>
+                </div>
+                <div id="regularGlass" class="inventoryItem text-center crystal">
+                    <div class="col-12 pt-1">
+                        <img src="IMG/crystals/regularGlass.svg" alt="regular glass" />
+                    </div>
+                    <p>Vaso regular</p>
+                </div>
                 <div class="inventoryItem">item 5</div>
                 <div class="inventoryItem">item 6</div>
                 <div class="inventoryItem">item 7</div>
@@ -157,7 +177,7 @@
 
 
     <!-- jquery min -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- bootstrap js -->
     <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
