@@ -1,0 +1,232 @@
+{
+  "inventoryItem": [
+    {
+      "id": "rum",
+      "type": "base",
+      "name": "Ron",
+      "imgPath": "IMG/bases/rumCacique.svg"
+    },
+    {
+      "id": "whiteRum",
+      "type": "base",
+      "name": "Ron blanco",
+      "imgPath": "IMG/bases/whiteRum.svg"
+    },
+    {
+      "id": "tequila",
+      "type": "base",
+      "name": "Tequila Oro",
+      "imgPath": "IMG/bases/tequila.svg"
+    },
+    {
+      "id": "cocuy",
+      "type": "base",
+      "name": "Cocuy",
+      "imgPath": "IMG/bases/cocuy.svg"
+    },
+    {
+      "id": "cachaza",
+      "type": "base",
+      "name": "Cachaza",
+      "imgPath": "IMG/bases/cachaza.svg"
+    },
+    {
+      "id": "gin",
+      "type": "base",
+      "name": "Ginebra",
+      "imgPath": "IMG/bases/gin.svg"
+    },
+    {
+      "id": "vodka",
+      "type": "base",
+      "name": "Vodka",
+      "imgPath": "IMG/bases/vodka.svg"
+    },
+    {
+      "id": "whisky",
+      "type": "base",
+      "name": "Whisky",
+      "imgPath": "IMG/bases/whisky.svg"
+    },
+    {
+      "id": "whiteTequila",
+      "type": "base",
+      "name": "Tequila blanco",
+      "imgPath": "IMG/bases/whiteTequila.svg"
+    },
+    {
+      "id": "blueCuracao",
+      "type": "base",
+      "name": "Blue curaçao",
+      "imgPath": "IMG/bases/blueCuracao.svg"
+    },
+    {
+      "id": "tripleSec",
+      "type": "base",
+      "name": "Triple seco",
+      "imgPath": "IMG/bases/tripleSec.svg"
+    },
+    {
+      "id": "dryVermouth",
+      "type": "base",
+      "name": "Vermouth seco",
+      "imgPath": "IMG/bases/dryVermouth.svg"
+    },
+    {
+      "id": "coke",
+      "type": "addition",
+      "name": "Cola negra",
+      "imgPath": "IMG/additions/coke.svg"
+    },
+    {
+      "id": "lemonJuice",
+      "type": "addition",
+      "name": "Zumo de limón",
+      "imgPath": "IMG/additions/lemonJuice.svg"
+    },
+    {
+      "id": "tonicWater",
+      "type": "addition",
+      "name": "Aguakina",
+      "imgPath": "IMG/additions/tonicWater.svg"
+    },
+    {
+      "id": "sodaWater",
+      "type": "addition",
+      "name": "Soda",
+      "imgPath": "IMG/additions/sodaWater.svg"
+    },
+    {
+      "id": "angostura",
+      "type": "addition",
+      "name": "Angostura",
+      "imgPath": "IMG/additions/angostura.svg"
+    },
+    {
+      "id": "sugar",
+      "type": "addition",
+      "name": "Azúcar",
+      "imgPath": "IMG/additions/sugar.svg"
+    },
+    {
+      "id": "peppermintLeaves",
+      "type": "addition",
+      "name": "Hoja de menta",
+      "imgPath": "IMG/additions/peppermintLeaves.svg"
+    },
+    {
+      "id": "strawberryJuice",
+      "type": "addition",
+      "name": "Jugo de fresa",
+      "imgPath": "IMG/additions/strawberryJuice.svg"
+    }, 
+    {
+      "id": "strawberry",
+      "type": "ornament",
+      "name": "Fresa",
+      "imgPath": "IMG/ornaments/strawberry.svg"
+    },
+    {
+      "id": "lemonSlice",
+      "type": "ornament",
+      "name": "Limón",
+      "imgPath": "IMG/ornaments/lemonSlice.svg"
+    }, 
+    {
+      "id": "peppermintStem",
+      "type": "ornament",
+      "name": "Tallo de menta",
+      "imgPath": "IMG/ornaments/peppermintStem.svg"
+    },
+    {
+      "id": "sugarFrost",
+      "type": "ornament",
+      "name": "Escarchado",
+      "imgPath": "IMG/ornaments/sugarFrost.svg"
+    },
+    {
+      "id": "lemonTwist",
+      "type": "ornament",
+      "name": "Twist de limón",
+      "imgPath": "IMG/ornaments/lemonTwist.svg"
+    },
+    {
+      "id": "olives",
+      "type": "ornament",
+      "name": "Aceitunas",
+      "imgPath": "IMG/ornaments/olives.svg"
+    },
+    {
+      "id": "collinsGlass",
+      "type": "crystal",
+      "name": "Vaso Collins",
+      "imgPath": "IMG/crystal/collinsGlass.svg"
+    },
+    {
+      "id": "champagneGlass",
+      "type": "crystal",
+      "name": "Copa de Champagne",
+      "imgPath": "IMG/crystal/champagneGlass.svg"
+    },
+    {
+      "id": "martiniGlass",
+      "type": "crystal",
+      "name": "Copa de Martini",
+      "imgPath": "IMG/crystal/martiniGlass.svg"
+    },
+    {
+      "id": "margaritaGlass",
+      "type": "crystal",
+      "name": "Copa Margarita",
+      "imgPath": "IMG/crystal/margaritaGlass.svg"
+    },
+    {
+      "id": "fluteGlass",
+      "type": "crystal",
+      "name": "Copa flauta",
+      "imgPath": "IMG/crystal/fluteGlass.svg"
+    },
+    {
+      "id": "tulipGlass",
+      "type": "crystal",
+      "name": "Copa tulipán",
+      "imgPath": "IMG/crystal/tulipGlass.svg"
+    },
+    {
+      "id": "hurricaneGlass",
+      "type": "crystal",
+      "name": "Vaso huracán",
+      "imgPath": "IMG/crystal/hurricaneGlass.svg"
+    },
+    {
+      "id": "tumblerGlass",
+      "type": "crystal",
+      "name": "Vaso Tumbler",
+      "imgPath": "IMG/crystal/tumblerGlass.svg"
+    },
+    {
+      "id": "wineGlass",
+      "type": "crystal",
+      "name": "Copa de vino",
+      "imgPath": "IMG/crystal/wineGlass.svg"
+    },
+    {
+      "id": "pilsnerGlass",
+      "type": "crystal",
+      "name": "Vaso Pilsner",
+      "imgPath": "IMG/crystal/pilsnerGlass.svg"
+    },
+    {
+      "id": "oldFashionedGlass",
+      "type": "crystal",
+      "name": "Vaso tradicional",
+      "imgPath": "IMG/crystal/oldFashionedGlass.svg"
+    },
+    {
+      "id": "shotGlass",
+      "type": "crystal",
+      "name": "Shot",
+      "imgPath": "IMG/crystal/shotGlass.svg"
+    }
+  ]
+}

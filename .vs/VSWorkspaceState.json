@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CSS",
+    "\\IMG",
+    "\\IMG\\bases",
+    "\\JS",
+    "\\JSON"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\JSON\\inventoryItems.json",
   "PreviewInSolutionExplorer": false
 }
