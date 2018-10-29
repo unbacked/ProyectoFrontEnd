@@ -2,11 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\CSS",
+    "\\CSS\\MDB",
     "\\IMG",
     "\\IMG\\bases",
     "\\JS",
-    "\\JSON"
+    "\\JSON",
+    "\\JS\\MDB"
   ],
-  "SelectedNode": "\\JSON\\inventoryItems.json",
+  "SelectedNode": "\\JS\\MDB\\mdb.js",
   "PreviewInSolutionExplorer": false
 }

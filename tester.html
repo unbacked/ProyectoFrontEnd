@@ -150,50 +150,57 @@
                             <h4></h4>
                         </div>
                         <div class="card-body">
-                            <button class="btn btn-dark" type="button">Ver pistas</button>
+                            <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#hintsCentralModal">Ver pistas</button>
                             <button class="btn btn-success" type="button">Servir trago</button>
                         </div>
                     </div>
                     <div id="userTestScores" class="card text-center">
+                        <!-- userName -->
                         <div class="card-header">
                             <h4></h4>
                         </div>
-                        <div class="card-body">
-
+                        <!-- scoresTable -->
+                        <div class="card-body pt-0">
+                            <div id="scoresTable" class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <!-- headings -->
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="text-left">Cocktail</th>
+                                            <th scope="col">Resultado</th>
+                                            <th scope="col">Pista</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-
             </div>
         </div>
-
-
-
-
-
-
-        <!-- gameZone -->
-        <!-- inventory -->
-        <!-- mixZone -->
-        <!-- recipeZone -->
-        <!--<div id="gameZone" class="row">
-
-            <div id="inventory" class="col-md col-lg-3">
-                <button type="button" onclick="alertDimensions()">Dimensiones</button>
-            </div>
-
-            <div id="mix" class="col-md col-lg-6">
-
-            </div>
-
-            <div id="recipe" class="col-md col-lg-3">
-
-            </div>
-        </div>-->
-
     </div>
-
+    <!-- modals -->
+    <div id="hintsCentralModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="hintsModal" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="hintsModal" class="modal-title w-100">Aquí está la pista...</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>aqui va el texto de las pistas que debe venir en el objeto recipe</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark dtn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+     
 
     <!-- jquery min -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

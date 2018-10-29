@@ -255,7 +255,8 @@ function startTest(ev) {
             "addition": ["lemonJuice", "coke"],
             "method": "direct",
             "crystal": "collinsGlass",
-            "ornament": "lemonSlice"
+            "ornament": "lemonSlice",
+            "hint": "Cuba es famosa por haber producido grandes cantidades de caña de azúcar en el pasado. La ironía consiste en unir el alcohol nacional con la bebida más emblemática del imperio en un vaso gringo para cocteles."
         },
         {
             "name": "Frozen Margarita",
@@ -263,7 +264,8 @@ function startTest(ev) {
             "addition": "lemonJuice",
             "method": "frozen",
             "crystal": "margaritaGlass",
-            "ornament": ["sugarFrost", "lemonSlice"]
+            "ornament": ["sugarFrost", "lemonSlice"],
+            "hint": "Margarita con M de México. Mezcla un alcohol 'caliente' con mucho hielo, servido en una copa con su nombre, adornado como un trago que te brindaría Tony Montana."
         },
         {
             "name": "Cocuy Tonic",
@@ -271,7 +273,8 @@ function startTest(ev) {
             "addition": "tonicWater",
             "method": "direct",
             "crystal": "collinsGlass",
-            "ornament": "lemonSlice"
+            "ornament": "lemonSlice",
+            "hint": "Muy obvio por el nombre... no entiendo cómo hizo falta la pista! El vaso es gringo y para cocteles."
         },
         {
             "name": "Trinidad",
@@ -279,7 +282,8 @@ function startTest(ev) {
             "addition": ["angostura", "lemonJuice", "coke"],
             "method": "direct",
             "crystal": "collingGlass",
-            "ornament": "lemonSlice"
+            "ornament": "lemonSlice",
+            "hint": "Pareciera llamarse Trinidad por el trío de acompañantes, comunes en tragos cuyos nombres hacen referencia a Islas del Caribe."
         },
         {
             "name": "Caipirinha",
@@ -287,6 +291,7 @@ function startTest(ev) {
             "addition": ["lemonJuice", "sugar"],
             "method": "direct",
             "crystal": "oldFashionedGlass",
+            "hint": "Al grano, brasilero, tradicional; ácido y dulce."
         },
         {
             "name": "Larita",
@@ -294,7 +299,8 @@ function startTest(ev) {
             "addition": "lemonJuice",
             "method": "shaken",
             "crystal": "margaritaGlass",
-            "ornament": ["sugarFrost", "lemonSlice"]
+            "ornament": ["sugarFrost", "lemonSlice"],
+            "hint": "Larita debe ser un trago venezolano. Algo así como agarrar un equivalente nacional del agave y arMAR-GARITA-rlo."
         },
         {
             "name": "Long Island Ice-Tea",
@@ -302,21 +308,24 @@ function startTest(ev) {
             "addition": ["coke", "lemonJuice"],
             "method": "direct",
             "crystal": "tumblerGlass",
-            "ornament": "lemonSlice"
+            "ornament": "lemonSlice",
+            "hint": "Puros alcoholes blancos en un vaso de té frío. Sin té, pero igual oscuro."
         },
         {
             "name": "Dry Martini",
             "base": ["gin", "dryVermouth"],
             "method": "refreshed",
             "crystal": "martiniGlass",
-            "ornament": "olives"
+            "ornament": "olives",
+            "hint": "Por Dios. No debes haber visto una película jamás. Es el trago de la aceituna. Servido sin hielo... en una copita con su nombre... joder."
         },
         {
             "name": "Vodka Martini",
             "base": ["vodka", "dryVermouth"],
             "method": "refreshed",
             "crystal": "martiniGlass",
-            "ornament": "lemonTwist"
+            "ornament": "lemonTwist",
+            "hint": "Con vodka en vez de ginebra. ¿Cómo se pierden puntos en una tan fácil?"
         }
     ];
     //select three random recipes
@@ -450,6 +459,21 @@ function startTest(ev) {
     //write userName on cardHeader h4
     let userNameCard = document.getElementById('userTestScores');
     userNameCard.firstElementChild.firstElementChild.innerHTML = "Resultados de nombreUsuario";
-    //write table with scores on userTestScores second child.
+    //write table with scores on tableBody
+    //build tableBody html
+    let tableBodyHTML = "";
+    //cycle through all selectedRecipes
+    for (let i = 0; i < selectedRecipes.length; i++) {
+        tableBodyHTML += `
+            <tr><td scope="row" class="text-left">${selectedRecipes[i].name}</td>
+                <td></td>
+                <td></td>
+            <tr>`;
+    }
+    document.getElementById('tableBody').innerHTML = tableBodyHTML;
+    //update hintModal content
+    let hintModal = document.getElementById('hintsModal').parentElement.nextElementSibling;
+    hintModal.firstElementChild.innerHTML = selectedRecipes[0].hint;
+
 
 }
