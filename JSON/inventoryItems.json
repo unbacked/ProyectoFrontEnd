@@ -160,73 +160,73 @@
       "id": "collinsGlass",
       "type": "crystal",
       "name": "Vaso Collins",
-      "imgPath": "IMG/crystal/collinsGlass.svg"
+      "imgPath": "IMG/crystals/collinsGlass.svg"
     },
     {
       "id": "champagneGlass",
       "type": "crystal",
-      "name": "Copa de Champagne",
-      "imgPath": "IMG/crystal/champagneGlass.svg"
+      "name": "Copa de Champán",
+      "imgPath": "IMG/crystals/champagneGlass.svg"
     },
     {
       "id": "martiniGlass",
       "type": "crystal",
       "name": "Copa de Martini",
-      "imgPath": "IMG/crystal/martiniGlass.svg"
+      "imgPath": "IMG/crystals/martiniGlass.svg"
     },
     {
       "id": "margaritaGlass",
       "type": "crystal",
       "name": "Copa Margarita",
-      "imgPath": "IMG/crystal/margaritaGlass.svg"
+      "imgPath": "IMG/crystals/margaritaGlass.svg"
     },
     {
       "id": "fluteGlass",
       "type": "crystal",
       "name": "Copa flauta",
-      "imgPath": "IMG/crystal/fluteGlass.svg"
+      "imgPath": "IMG/crystals/fluteGlass.svg"
     },
     {
       "id": "tulipGlass",
       "type": "crystal",
       "name": "Copa tulipán",
-      "imgPath": "IMG/crystal/tulipGlass.svg"
+      "imgPath": "IMG/crystals/tulipGlass.svg"
     },
     {
       "id": "hurricaneGlass",
       "type": "crystal",
       "name": "Vaso huracán",
-      "imgPath": "IMG/crystal/hurricaneGlass.svg"
+      "imgPath": "IMG/crystals/hurricaneGlass.svg"
     },
     {
       "id": "tumblerGlass",
       "type": "crystal",
       "name": "Vaso Tumbler",
-      "imgPath": "IMG/crystal/tumblerGlass.svg"
+      "imgPath": "IMG/crystals/tumblerGlass.svg"
     },
     {
       "id": "wineGlass",
       "type": "crystal",
       "name": "Copa de vino",
-      "imgPath": "IMG/crystal/wineGlass.svg"
+      "imgPath": "IMG/crystals/wineGlass.svg"
     },
     {
       "id": "pilsnerGlass",
       "type": "crystal",
       "name": "Vaso Pilsner",
-      "imgPath": "IMG/crystal/pilsnerGlass.svg"
+      "imgPath": "IMG/crystals/pilsnerGlass.svg"
     },
     {
       "id": "oldFashionedGlass",
       "type": "crystal",
       "name": "Vaso tradicional",
-      "imgPath": "IMG/crystal/oldFashionedGlass.svg"
+      "imgPath": "IMG/crystals/oldFashionedGlass.svg"
     },
     {
       "id": "shotGlass",
       "type": "crystal",
       "name": "Shot",
-      "imgPath": "IMG/crystal/shotGlass.svg"
+      "imgPath": "IMG/crystals/shotGlass.svg"
     }
   ]
 }

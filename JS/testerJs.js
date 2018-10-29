@@ -17,39 +17,46 @@ function filter() {
     let selection = $("select");
     //grab inventoryItems collection
     let inventoryItems = document.getElementsByClassName("inventoryItem");
+    let objectsOnInventory = [];
+    let j = 0;
+    //filter collection of items to remove those that are not inside #inventoryItems
+    for (let i = 0; i < inventoryItems.length; i++) {
+        if (inventoryItems[i].parentElement.id == "inventoryItems") {
+            objectsOnInventory[j] = inventoryItems[i];
+            j += 1;
+        }
+    }
+    //we filter now based on items objectsOnInventory
     //check if selection is "all" as in filter none, or view all items
     if (selection.val() == "all") {
         //cycle through items
-        for (let i = 0; i < inventoryItems.length; i++) {
+        for (let i = 0; i < objectsOnInventory.length; i++) {
             //show items
-            console.log("selected all");
-            if (inventoryItems[i].classList.contains("d-none") == true) {
-                inventoryItems[i].classList.remove("d-none");
+            if (objectsOnInventory[i].classList.contains("d-none") == true) {
+                objectsOnInventory[i].classList.remove("d-none");
             }
         }
     } else {
         //cycle through items to see if they belong to selected class to view
-        for (let i = 0; i < inventoryItems.length; i++) {
+        for (let i = 0; i < objectsOnInventory.length; i++) {
             //checks id value to ignore items with empty id
-            if (inventoryItems[i].id !== "") {
+            if (objectsOnInventory[i].id !== "") {
                 //check if selected class is found in item classlist
-                if (inventoryItems[i].classList.contains(selection.val()) == true) {
-                    if (inventoryItems[i].classList.contains("d-none") == true) {
+                if (objectsOnInventory[i].classList.contains(selection.val()) == true) {
+                    if (objectsOnInventory[i].classList.contains("d-none") == true) {
                         //if hidden, unhide
-                        inventoryItems[i].classList.remove("d-none");
+                        objectsOnInventory[i].classList.remove("d-none");
                     }
                 } else {
                     //item not relevant for desired view, filtered item
-                    if (inventoryItems[i].classList.contains("d-none") == false) {
+                    if (objectsOnInventory[i].classList.contains("d-none") == false) {
                         //if not hidden, hide
-                        inventoryItems[i].classList.add("d-none");
+                        objectsOnInventory[i].classList.add("d-none");
                     }
                 }
             }
-
         }
     }
-
 }
 
 //mousewheel horizontal scroll for inventory items
@@ -200,4 +207,249 @@ function activateBtn(ev) {
             childBtn.classList.remove("active");
         }
     }
+}
+
+//handles document ready routines
+$(function () {
+    $("#inventoryItems").html("");
+    //new xmlhttprequest
+    let xhttp = new XMLHttpRequest;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            //get response text
+            let docResponse = JSON.parse(xhttp.responseText);
+            //inventoryItemsColl has inventoryItem as js objects
+            let inventoryItemsColl = docResponse.inventoryItem;
+            let inventoryItemsHTML = "";
+            for (let i = 0; i < inventoryItemsColl.length; i++) {
+                //here we create HTML content for inventory items
+                inventoryItemsHTML += `<div id="${inventoryItemsColl[i].id}" class="inventoryItem text-center ${inventoryItemsColl[i].type}" draggable="true" ondragstart="dragstartHandler(event)" ondragend="dragendHandler(event)">
+                    <div class="col-12 pt-1" draggable="false">
+                        <img src="${inventoryItemsColl[i].imgPath}" alt="${inventoryItemsColl[i].name}" draggable="false" />
+                    </div>
+                    <p draggable="false">${inventoryItemsColl[i].name}</p></div>`
+            }
+            //we now input HTML in #inventoryItems div
+            //console.log(inventoryItemsHTML);
+            $("#inventoryItems").html(inventoryItemsHTML);
+        }
+    };
+    xhttp.open("GET", "/JSON/inventoryItems.json", true);
+    xhttp.send();    
+});
+
+//handles test start
+function startTest(ev) {
+    //hide div with start test button
+    let divToHide = ev.target.parentElement;
+    divToHide.hidden = true;
+    //validate if user is logged in
+    //if not logged in, show div 2 for login/register and end function
+
+    //if logged in, proceed
+    //import recipes from JSON file (meanwhile we use created objects here)
+    let recipes = [
+        {
+            "name": "Cuba Libre",
+            "base": "rum",
+            "addition": ["lemonJuice", "coke"],
+            "method": "direct",
+            "crystal": "collinsGlass",
+            "ornament": "lemonSlice"
+        },
+        {
+            "name": "Frozen Margarita",
+            "base": ["tequila", "tripleSec"],
+            "addition": "lemonJuice",
+            "method": "frozen",
+            "crystal": "margaritaGlass",
+            "ornament": ["sugarFrost", "lemonSlice"]
+        },
+        {
+            "name": "Cocuy Tonic",
+            "base": "cocuy",
+            "addition": "tonicWater",
+            "method": "direct",
+            "crystal": "collinsGlass",
+            "ornament": "lemonSlice"
+        },
+        {
+            "name": "Trinidad",
+            "base": "rum",
+            "addition": ["angostura", "lemonJuice", "coke"],
+            "method": "direct",
+            "crystal": "collingGlass",
+            "ornament": "lemonSlice"
+        },
+        {
+            "name": "Caipirinha",
+            "base": "cachaza",
+            "addition": ["lemonJuice", "sugar"],
+            "method": "direct",
+            "crystal": "oldFashionedGlass",
+        },
+        {
+            "name": "Larita",
+            "base": ["cocuy", "tripleSec"],
+            "addition": "lemonJuice",
+            "method": "shaken",
+            "crystal": "margaritaGlass",
+            "ornament": ["sugarFrost", "lemonSlice"]
+        },
+        {
+            "name": "Long Island Ice-Tea",
+            "base": ["whiteRum", "vodka", "gin", "whiteTequila", "tripleSec"],
+            "addition": ["coke", "lemonJuice"],
+            "method": "direct",
+            "crystal": "tumblerGlass",
+            "ornament": "lemonSlice"
+        },
+        {
+            "name": "Dry Martini",
+            "base": ["gin", "dryVermouth"],
+            "method": "refreshed",
+            "crystal": "martiniGlass",
+            "ornament": "olives"
+        },
+        {
+            "name": "Vodka Martini",
+            "base": ["vodka", "dryVermouth"],
+            "method": "refreshed",
+            "crystal": "martiniGlass",
+            "ornament": "lemonTwist"
+        }
+    ];
+    //select three random recipes
+    let rndSelections = [];
+    let j = 0;
+    for (i = 1; i < 4; i++) {
+        let rndNumber = 1 + Math.floor(Math.random() * recipes.length - 1);
+        //first selection
+        if (rndSelections.length < 1) {
+            rndSelections[j] = rndNumber;
+            j += 1;
+        }
+        //next selections
+        else {
+            let repeated = false;
+            //cycle through rndSelections to check rndNumber is different
+            for (let x = 0; x < rndSelections.length; x++) {
+                if (rndNumber == rndSelections[x]) {
+                    repeated = true;
+                }
+            }
+            //if number is repeated, cycle i for again...
+            if (repeated == true) {
+                i -= 1;
+            }
+            //else, register new rndSelections
+            else {
+                rndSelections[j] = rndNumber;
+                j += 1;
+            }
+        }
+    }
+    //randomNumbers represent random Id selected for recipes to evaluate on test
+    //show scenario 3 divs
+    document.getElementById('testResultsZone').hidden = false;
+    //create selectedRecipes collection
+    let selectedRecipes = [];
+    for (let i = 0; i < rndSelections.length; i++) {
+        selectedRecipes[i] = recipes[rndSelections[i]];
+    }
+    //create ingredient divs on mixZone for first recipe
+    //count elements for each class: base, addition & ornaments
+    //crystal is always one ingredient and method always has five options
+    console.log(selectedRecipes[0]);
+    //verify base is not null
+    if (selectedRecipes[0].base !== null) {
+        //empty baseIngredients
+        $('#baseIngredients').html("");
+        let baseDivs = "";
+        //select first recipe bases
+        let baseArray = selectedRecipes[0].base;
+        //verify if it is one or more bases
+        if (Array.isArray(baseArray) == true) {
+            //if more than one base, create as many base ingredient divs
+            for (let i = 1; i <= baseArray.length; i++) {
+                baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            }
+            console.log(baseArray.length);
+        } else {
+            //if only one base, create only one base ingredient div
+            baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            console.log("1");
+        }
+        $('#baseIngredients').html(baseDivs);
+    }
+    //verify addition is not null
+    if (selectedRecipes[0].addition !== null) {
+        //empty additionIngredients
+        $('#additionIngredients').html("");
+        let additionDivs = "";
+        //select first recipe additions
+        let additionArray = selectedRecipes[0].addition;
+        //verify if it is one or more additions
+        if (Array.isArray(additionArray) == true) {
+            //if more than one addition, create as many addition ingredient divs
+            for (let i = 1; i <= additionArray.length; i++) {
+                additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            }
+            console.log(additionArray.length);
+        }
+        else {
+            //if only one addition, create one addition ingredient div
+            additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            console.log("1");
+        }
+        $('#additionIngredients').html(additionDivs);
+    }
+    //verify ornament is not null
+    if (selectedRecipes[0].ornament !== null) {
+        //empty ornamentIngredients
+        $('#ornamentIngredients').html("");
+        let ornamentDivs = "";
+        //select ornaments for first recipe
+        let ornamentArray = selectedRecipes[0].ornament;
+        //verify if one or more ornaments
+        if (Array.isArray(ornamentArray) == true) {
+            //if more than one ornament, create as many ornament ingredient divs
+            for (let i = 1; i <= ornamentArray.length; i++) {
+                ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            }
+            console.log(ornamentArray.length);
+        }
+        else {
+            //if only one ornament, create one ornament ingredient div
+            ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            console.log("1");
+        }
+        $('#ornamentIngredients').html(ornamentDivs);
+    }
+    //methodZone
+    $('#methodButtons').html("");
+    let methodHTML = `
+        <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="shaken">Agitado</button>
+        <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="refreshed">Refrescado</button>
+        <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="direct">Construido o directo</button>
+        <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="doubleFiltered">Doble colado</button>
+        <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="frozen">Granizado</button>`;
+    $('#methodButtons').html(methodHTML);
+    //crystalZone
+    $('#crystalIngredients').html("");
+    let crystalDiv = `
+        <div class="ingredient crystal" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`
+    $('#crystalIngredients').html(crystalDiv);
+    //fill up testResults zone
+    //write name on cardHeader h4
+    let recipeCard = document.getElementById('currentRecipeCard');
+    console.log(recipeCard.id);
+    recipeCard.firstElementChild.firstElementChild.innerHTML = "Preparando un " + selectedRecipes[0].name + "!";
+    //write clue on clues modal
+
+    //write userName on cardHeader h4
+    let userNameCard = document.getElementById('userTestScores');
+    userNameCard.firstElementChild.firstElementChild.innerHTML = "Resultados de nombreUsuario";
+    //write table with scores on userTestScores second child.
+
 }

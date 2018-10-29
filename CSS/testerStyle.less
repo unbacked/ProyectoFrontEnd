@@ -32,6 +32,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #2E2E2E;
 }
 
 .container {
@@ -42,11 +43,14 @@ body {
     padding: 0;
     margin: 0;
 
+    select {
+        background-color: #d0d6e2;
+    }
+
     #inventoryItems {
         overflow-x: hidden;
         overflow-y: hidden;
         /*background-color: darkgreen;*/
-
         .inventoryItem {
             height: @inventoryItemHeight;
             min-width: @inventoryItemWidth;
@@ -63,6 +67,7 @@ body {
                 font-size: 0.75rem;
                 margin: 0;
                 padding: 0;
+                color: #d0d6e2;
             }
         }
     }
@@ -79,7 +84,6 @@ body {
     display: flex;
 }
 
-
 #testZone {
     margin: 0;
     padding: 0;
@@ -95,6 +99,7 @@ body {
         h4 {
             color: white;
             text-align: center;
+            font-size: medium;
 
             @media @laptopAndUp {
                 text-align: left;
@@ -102,7 +107,7 @@ body {
         }
 
         #baseZone {
-            background-color: darkslategray;
+            background-color: #1C2331;
             padding: 10px;
 
             #baseIngredients {
@@ -123,7 +128,7 @@ body {
         }
 
         #additionZone {
-            background-color: lightslategray;
+            background-color: #1C2331;
             padding: 10px;
 
             #additionIngredients {
@@ -144,11 +149,12 @@ body {
         }
 
         #methodZone {
-            background-color: darkslategray;
+            background-color: #1C2331;
             padding: 20px 10px;
 
             button {
                 margin: 10px;
+                /*font-size: smaller;*/
                 /*min-width: @methodBtnWidth;
                 max-width: @methodBtnWidth;*/
             }
@@ -172,7 +178,7 @@ body {
         }
 
         #ornamentZone {
-            background-color: lightslategray;
+            background-color: #1C2331;
             padding: 10px;
 
             #ornamentIngredients {
@@ -194,7 +200,7 @@ body {
         }
 
         #crystalZone {
-            background-color: darkslategray;
+            background-color: #1C2331;
             padding: 10px;
 
             #crystalIngredients {
@@ -214,19 +220,36 @@ body {
                 }
             }
         }
-        /*#mixResult {
-            height: @mixResultHeight;
-            width: @mixResultWidth;
-            background-color: darkslategray;
-            margin: 25px;
-        }*/
     }
 
-
-
     #testPanel {
-        background-color: darkgray;
+        background-color: #d0d6e2;
         min-height: 300px;
+        font-size: small;
+
+
+
+        .card {
+            width: 100%;
+            background-color: #d0d6e2;
+            border: none;
+            box-shadow: none;
+
+            .card-header {
+                background-color: #212121;
+                color: white;
+                border-radius: 0;
+
+                h4{
+                    margin-bottom:0;
+                    font-size: medium;
+                }
+            }
+        }
+
+        p {
+            font-size: small;
+        }
     }
 }
 
@@ -242,8 +265,8 @@ body {
     overflow: hidden;
     /*background-color: aqua;*/
     margin: 10px;
-    border: 2px dashed white;
-    color: white;
+    border: 2px dashed #929fba;
+    color: #d0d6e2;
     text-align: center;
 
     .inventoryItem {
@@ -252,7 +275,7 @@ body {
         max-width: @inventoryItemWidth;
         margin: auto;
         display: block;
-        color: white;
+        color: #d0d6e2;
         /*background-color: aqua;*/
         img {
             width: 100%;
@@ -266,8 +289,6 @@ body {
         }
     }
 }
-
-
 
 
 
