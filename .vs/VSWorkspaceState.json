@@ -7,8 +7,8 @@
     "\\IMG\\bases",
     "\\JS",
     "\\JSON",
-    "\\JS\\MDB"
+    "\\JS\\MDB",
+    "\\JS\\MDB\\modules"
   ],
-  "SelectedNode": "\\JS\\MDB\\mdb.js",
   "PreviewInSolutionExplorer": false
 }

@@ -173,7 +173,7 @@ function dragoverHandler(ev) {
                 ev.target.style.opacity = 0.2
             }
         }
-    //does nothing if destination is filled or is an item
+        //does nothing if destination is filled or is an item
     }
 }
 
@@ -197,7 +197,7 @@ function dragendHandler(ev) {
 //handles methodZone button group
 function activateBtn(ev) {
     //for each button in methodDiv
-    for (let childBtn = ev.target.parentNode.firstElementChild; childBtn !== null; childBtn = childBtn.nextElementSibling) {        
+    for (let childBtn = ev.target.parentNode.firstElementChild; childBtn !== null; childBtn = childBtn.nextElementSibling) {
         //enters if this is targeted button to add active class
         if (childBtn.innerHTML == ev.target.innerHTML) {
             childBtn.classList.add("active");
@@ -235,7 +235,7 @@ $(function () {
         }
     };
     xhttp.open("GET", "/JSON/inventoryItems.json", true);
-    xhttp.send();    
+    xhttp.send();
 });
 
 //handles test start
@@ -247,233 +247,604 @@ function startTest(ev) {
     //if not logged in, show div 2 for login/register and end function
 
     //if logged in, proceed
-    //import recipes from JSON file (meanwhile we use created objects here)
-    let recipes = [
-        {
-            "name": "Cuba Libre",
-            "base": "rum",
-            "addition": ["lemonJuice", "coke"],
-            "method": "direct",
-            "crystal": "collinsGlass",
-            "ornament": "lemonSlice",
-            "hint": "Cuba es famosa por haber producido grandes cantidades de caña de azúcar en el pasado. La ironía consiste en unir el alcohol nacional con la bebida más emblemática del imperio en un vaso gringo para cocteles."
-        },
-        {
-            "name": "Frozen Margarita",
-            "base": ["tequila", "tripleSec"],
-            "addition": "lemonJuice",
-            "method": "frozen",
-            "crystal": "margaritaGlass",
-            "ornament": ["sugarFrost", "lemonSlice"],
-            "hint": "Margarita con M de México. Mezcla un alcohol 'caliente' con mucho hielo, servido en una copa con su nombre, adornado como un trago que te brindaría Tony Montana."
-        },
-        {
-            "name": "Cocuy Tonic",
-            "base": "cocuy",
-            "addition": "tonicWater",
-            "method": "direct",
-            "crystal": "collinsGlass",
-            "ornament": "lemonSlice",
-            "hint": "Muy obvio por el nombre... no entiendo cómo hizo falta la pista! El vaso es gringo y para cocteles."
-        },
-        {
-            "name": "Trinidad",
-            "base": "rum",
-            "addition": ["angostura", "lemonJuice", "coke"],
-            "method": "direct",
-            "crystal": "collingGlass",
-            "ornament": "lemonSlice",
-            "hint": "Pareciera llamarse Trinidad por el trío de acompañantes, comunes en tragos cuyos nombres hacen referencia a Islas del Caribe."
-        },
-        {
-            "name": "Caipirinha",
-            "base": "cachaza",
-            "addition": ["lemonJuice", "sugar"],
-            "method": "direct",
-            "crystal": "oldFashionedGlass",
-            "hint": "Al grano, brasilero, tradicional; ácido y dulce."
-        },
-        {
-            "name": "Larita",
-            "base": ["cocuy", "tripleSec"],
-            "addition": "lemonJuice",
-            "method": "shaken",
-            "crystal": "margaritaGlass",
-            "ornament": ["sugarFrost", "lemonSlice"],
-            "hint": "Larita debe ser un trago venezolano. Algo así como agarrar un equivalente nacional del agave y arMAR-GARITA-rlo."
-        },
-        {
-            "name": "Long Island Ice-Tea",
-            "base": ["whiteRum", "vodka", "gin", "whiteTequila", "tripleSec"],
-            "addition": ["coke", "lemonJuice"],
-            "method": "direct",
-            "crystal": "tumblerGlass",
-            "ornament": "lemonSlice",
-            "hint": "Puros alcoholes blancos en un vaso de té frío. Sin té, pero igual oscuro."
-        },
-        {
-            "name": "Dry Martini",
-            "base": ["gin", "dryVermouth"],
-            "method": "refreshed",
-            "crystal": "martiniGlass",
-            "ornament": "olives",
-            "hint": "Por Dios. No debes haber visto una película jamás. Es el trago de la aceituna. Servido sin hielo... en una copita con su nombre... joder."
-        },
-        {
-            "name": "Vodka Martini",
-            "base": ["vodka", "dryVermouth"],
-            "method": "refreshed",
-            "crystal": "martiniGlass",
-            "ornament": "lemonTwist",
-            "hint": "Con vodka en vez de ginebra. ¿Cómo se pierden puntos en una tan fácil?"
-        }
-    ];
-    //select three random recipes
-    let rndSelections = [];
-    let j = 0;
-    for (i = 1; i < 4; i++) {
-        let rndNumber = 1 + Math.floor(Math.random() * recipes.length - 1);
-        //first selection
-        if (rndSelections.length < 1) {
-            rndSelections[j] = rndNumber;
-            j += 1;
-        }
-        //next selections
-        else {
-            let repeated = false;
-            //cycle through rndSelections to check rndNumber is different
-            for (let x = 0; x < rndSelections.length; x++) {
-                if (rndNumber == rndSelections[x]) {
-                    repeated = true;
+    //import recipes from JSON file
+    //new xmlhttprequest
+    let xhttp = new XMLHttpRequest;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            //get response text
+            let docResponse = JSON.parse(xhttp.responseText);
+            //recipes has recipes as js objects
+            let recipes = docResponse.recipe;
+            //select three random recipes
+            let rndSelections = [];
+            let j = 0;
+            for (i = 1; i < 4; i++) {
+                let rndNumber = 1 + Math.floor(Math.random() * recipes.length - 1);
+                //first selection
+                if (rndSelections.length < 1) {
+                    rndSelections[j] = rndNumber;
+                    j += 1;
+                }
+                //next selections
+                else {
+                    let repeated = false;
+                    //cycle through rndSelections to check rndNumber is different
+                    for (let x = 0; x < rndSelections.length; x++) {
+                        if (rndNumber == rndSelections[x]) {
+                            repeated = true;
+                        }
+                    }
+                    //if number is repeated, cycle i for again...
+                    if (repeated == true) {
+                        i -= 1;
+                    }
+                    //else, register new rndSelections
+                    else {
+                        rndSelections[j] = rndNumber;
+                        j += 1;
+                    }
                 }
             }
-            //if number is repeated, cycle i for again...
-            if (repeated == true) {
-                i -= 1;
+            //randomNumbers represent random Id selected for recipes to evaluate on test
+            //show scenario 3 divs
+            document.getElementById('testResultsZone').hidden = false;
+            //create selectedRecipes collection
+            let selectedRecipes = [];
+            for (let i = 0; i < rndSelections.length; i++) {
+                selectedRecipes[i] = recipes[rndSelections[i]];
             }
-            //else, register new rndSelections
-            else {
-                rndSelections[j] = rndNumber;
-                j += 1;
+            //create ingredient divs on mixZone for first recipe
+            //count elements for each class: base, addition & ornaments
+            //crystal is always one ingredient and method always has five options
+            console.log(selectedRecipes[0]);
+            //verify base is not null
+            if (typeof selectedRecipes[0].base !== "undefined") {
+                //empty baseIngredients
+                $('#baseIngredients').html("");
+                let baseDivs = "";
+                //select first recipe bases
+                let baseArray = selectedRecipes[0].base;
+                //verify if it is one or more bases
+                if (Array.isArray(baseArray) == true) {
+                    //if more than one base, create as many base ingredient divs
+                    for (let i = 1; i <= baseArray.length; i++) {
+                        baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    }
+                    console.log(baseArray.length);
+                } else {
+                    //if only one base, create only one base ingredient div
+                    baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    console.log("1");
+                }
+                $('#baseIngredients').html(baseDivs);
             }
-        }
-    }
-    //randomNumbers represent random Id selected for recipes to evaluate on test
-    //show scenario 3 divs
-    document.getElementById('testResultsZone').hidden = false;
-    //create selectedRecipes collection
-    let selectedRecipes = [];
-    for (let i = 0; i < rndSelections.length; i++) {
-        selectedRecipes[i] = recipes[rndSelections[i]];
-    }
-    //create ingredient divs on mixZone for first recipe
-    //count elements for each class: base, addition & ornaments
-    //crystal is always one ingredient and method always has five options
-    console.log(selectedRecipes[0]);
-    //verify base is not null
-    if (selectedRecipes[0].base !== null) {
-        //empty baseIngredients
-        $('#baseIngredients').html("");
-        let baseDivs = "";
-        //select first recipe bases
-        let baseArray = selectedRecipes[0].base;
-        //verify if it is one or more bases
-        if (Array.isArray(baseArray) == true) {
-            //if more than one base, create as many base ingredient divs
-            for (let i = 1; i <= baseArray.length; i++) {
-                baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            //verify addition is not null
+            if (typeof selectedRecipes[0].addition !== "undefined") {
+                //empty additionIngredients
+                $('#additionIngredients').html("");
+                let additionDivs = "";
+                //select first recipe additions
+                let additionArray = selectedRecipes[0].addition;
+                //verify if it is one or more additions
+                if (Array.isArray(additionArray) == true) {
+                    //if more than one addition, create as many addition ingredient divs
+                    for (let i = 1; i <= additionArray.length; i++) {
+                        additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    }
+                    console.log(additionArray.length);
+                }
+                else {
+                    //if only one addition, create one addition ingredient div
+                    additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    console.log("1");
+                }
+                $('#additionIngredients').html(additionDivs);
             }
-            console.log(baseArray.length);
-        } else {
-            //if only one base, create only one base ingredient div
-            baseDivs += `<div class="ingredient base" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
-            console.log("1");
-        }
-        $('#baseIngredients').html(baseDivs);
-    }
-    //verify addition is not null
-    if (selectedRecipes[0].addition !== null) {
-        //empty additionIngredients
-        $('#additionIngredients').html("");
-        let additionDivs = "";
-        //select first recipe additions
-        let additionArray = selectedRecipes[0].addition;
-        //verify if it is one or more additions
-        if (Array.isArray(additionArray) == true) {
-            //if more than one addition, create as many addition ingredient divs
-            for (let i = 1; i <= additionArray.length; i++) {
-                additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+            //verify ornament is not null
+            if (typeof selectedRecipes[0].ornament !== "undefined") {
+                //empty ornamentIngredients
+                $('#ornamentIngredients').html("");
+                let ornamentDivs = "";
+                //select ornaments for first recipe
+                let ornamentArray = selectedRecipes[0].ornament;
+                //verify if one or more ornaments
+                if (Array.isArray(ornamentArray) == true) {
+                    //if more than one ornament, create as many ornament ingredient divs
+                    for (let i = 1; i <= ornamentArray.length; i++) {
+                        ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    }
+                    console.log(ornamentArray.length);
+                }
+                else {
+                    //if only one ornament, create one ornament ingredient div
+                    ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
+                    console.log("1");
+                }
+                $('#ornamentIngredients').html(ornamentDivs);
             }
-            console.log(additionArray.length);
-        }
-        else {
-            //if only one addition, create one addition ingredient div
-            additionDivs += `<div class="ingredient addition" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
-            console.log("1");
-        }
-        $('#additionIngredients').html(additionDivs);
-    }
-    //verify ornament is not null
-    if (selectedRecipes[0].ornament !== null) {
-        //empty ornamentIngredients
-        $('#ornamentIngredients').html("");
-        let ornamentDivs = "";
-        //select ornaments for first recipe
-        let ornamentArray = selectedRecipes[0].ornament;
-        //verify if one or more ornaments
-        if (Array.isArray(ornamentArray) == true) {
-            //if more than one ornament, create as many ornament ingredient divs
-            for (let i = 1; i <= ornamentArray.length; i++) {
-                ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
-            }
-            console.log(ornamentArray.length);
-        }
-        else {
-            //if only one ornament, create one ornament ingredient div
-            ornamentDivs += `<div class="ingredient ornament" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`;
-            console.log("1");
-        }
-        $('#ornamentIngredients').html(ornamentDivs);
-    }
-    //methodZone
-    $('#methodButtons').html("");
-    let methodHTML = `
+            //methodZone
+            $('#methodButtons').html("");
+            let methodHTML = `
         <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="shaken">Agitado</button>
         <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="refreshed">Refrescado</button>
         <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="direct">Construido o directo</button>
         <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="doubleFiltered">Doble colado</button>
         <button class="btn btn-primary" type="button" onclick="activateBtn(event)" value="frozen">Granizado</button>`;
-    $('#methodButtons').html(methodHTML);
-    //crystalZone
-    $('#crystalIngredients').html("");
-    let crystalDiv = `
+            $('#methodButtons').html(methodHTML);
+            //crystalZone
+            $('#crystalIngredients').html("");
+            let crystalDiv = `
         <div class="ingredient crystal" ondragover="dragoverHandler(event)" ondragleave="dragleaveHandler(event)" ondrop="dropHandler(event)"></div>`
-    $('#crystalIngredients').html(crystalDiv);
-    //fill up testResults zone
-    //write name on cardHeader h4
-    let recipeCard = document.getElementById('currentRecipeCard');
-    console.log(recipeCard.id);
-    recipeCard.firstElementChild.firstElementChild.innerHTML = "Preparando un " + selectedRecipes[0].name + "!";
-    //write clue on clues modal
+            $('#crystalIngredients').html(crystalDiv);
+            //fill up testResults zone
+            //write name on cardHeader h4
+            let recipeCard = document.getElementById('currentRecipeCard');
+            console.log(recipeCard.id);
+            recipeCard.firstElementChild.firstElementChild.innerHTML = "Preparando un " + selectedRecipes[0].name + "!";
+            //write clue on clues modal
 
-    //write userName on cardHeader h4
-    let userNameCard = document.getElementById('userTestScores');
-    userNameCard.firstElementChild.firstElementChild.innerHTML = "Resultados de nombreUsuario";
-    //write table with scores on tableBody
-    //build tableBody html
-    let tableBodyHTML = "";
-    //cycle through all selectedRecipes
-    for (let i = 0; i < selectedRecipes.length; i++) {
-        tableBodyHTML += `
+            //write userName on cardHeader h4
+            let userNameCard = document.getElementById('userTestScores');
+            userNameCard.firstElementChild.firstElementChild.innerHTML = "Resultados de nombreUsuario";
+            //write table with scores on tableBody
+            //build tableBody html
+            let tableBodyHTML = "";
+            //cycle through all selectedRecipes
+            for (let i = 0; i < selectedRecipes.length; i++) {
+                tableBodyHTML += `
             <tr><td scope="row" class="text-left">${selectedRecipes[i].name}</td>
                 <td></td>
                 <td></td>
             <tr>`;
-    }
-    document.getElementById('tableBody').innerHTML = tableBodyHTML;
-    //update hintModal content
-    let hintModal = document.getElementById('hintsModal').parentElement.nextElementSibling;
-    hintModal.firstElementChild.innerHTML = selectedRecipes[0].hint;
+            }
+            document.getElementById('tableBody').innerHTML = tableBodyHTML;
+            //update hintModal content
+            let hintModal = document.getElementById('hintsModal').parentElement.nextElementSibling;
+            hintModal.firstElementChild.innerHTML = selectedRecipes[0].hint;
+        }
+    };
+    xhttp.open("GET", "/JSON/cocktailRecipes.json", true);
+    xhttp.send();
+}
 
+//handles serve cocktail
+function serveDrink(ev) {
+    //load recipes
+    //import recipes from JSON file
+    //new xmlhttprequest
+    let recipes = [];
+    let thisRecipe;
+    let xhttp = new XMLHttpRequest;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log('entered');
+            //get response text
+            let docResponse = JSON.parse(xhttp.responseText);
+            //recipes has recipes as js objects
+            recipes = docResponse.recipe;
+            console.log(recipes);
+            //now get current drink from table header
+            let currentDrink = document.getElementById('tableBody').firstElementChild.children[0].innerHTML;
+            console.log(currentDrink);
+            //get servedDrink as array of inventoryItem id's
+            let servedDrink = [];
+            //get jsonServedDrink as json syntax text for file in future
+            let jsonServedDrink = `
+                                    {
+                                        "userName": "nombreUsuario",
+                                        "drinkName": "${currentDrink}",`;
+            //to get servedDrink we cycle through each zone, start with base
+            let x = 0;
+            let currentChildren = document.getElementById('baseIngredients').children;
+            //cycle through ingredient div in base
+            for (let j = 0; j < currentChildren.length; j++) {
+                //check if ingredient div is not empty
+                if (currentChildren[j].innerHTML !== "") {
+                    //array build
+                    servedDrink.push([x]);
+                    servedDrink[x][0] = "base";
+                    servedDrink[x][1] = currentChildren[j].firstElementChild.id;
+                    x += 1;
+                    //json text build
+                    //if there is more than one base
+                    if (currentChildren.length > 1) {
+                        //first base treatment
+                        if (j == 0) {
+                            jsonServedDrink += `
+                                                "base": [ "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                        //last base treatment
+                        else if (j == currentChildren.length - 1) {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}" ]`;
+                        }
+                        //else
+                        else {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                    }
+                    //if there is only one base
+                    else {
+                        jsonServedDrink += `
+                                            "base": "${currentChildren[j].firstElementChild.id}"`;
+                    }
+                }
+            }
+            //now with addition
+            currentChildren = document.getElementById('additionIngredients').children;
+            //cycle through ingredient div in addition
+            for (let j = 0; j < currentChildren.length; j++) {
+                //check if ingredient div is not empty
+                if (currentChildren[j].innerHTML !== "") {
+                    //array build
+                    servedDrink.push([x]);
+                    servedDrink[x][0] = "addition";
+                    servedDrink[x][1] = currentChildren[j].firstElementChild.id;
+                    x += 1;
+                    //json text build
+                    //if there is more than one addition
+                    if (currentChildren.length > 1) {
+                        //first addition treatment
+                        if (j == 0) {
+                            jsonServedDrink += `,
+                                                "addition": [ "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                        //last addition treatment
+                        else if (j == currentChildren.length - 1) {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}" ]`;
+                        }
+                        //else
+                        else {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                    }
+                    //if there is only one addition
+                    else {
+                        jsonServedDrink += `,
+                                            "addition": "${currentChildren[j].firstElementChild.id}"`;
+                    }
+                }
+            }
+            //now with method
+            //cycle through buttons and find active one
+            currentChildren = document.getElementById('methodButtons').children;
+            for (let j = 0; j < currentChildren.length; j++) {
+                //find out which child is class="active"
+                if (currentChildren[j].classList.contains('active') == true) {
+                    //array build
+                    servedDrink.push([x]);
+                    servedDrink[x][0] = "method";
+                    servedDrink[x][1] = currentChildren[j].value;
+                    x += 1;
+                    //json text build
+                    jsonServedDrink += `,
+                                        "method": "${currentChildren[j].value}"`;
+                    //force for exit
+                    j = currentChildren.length + 1;
+                }
+            }
+            //now with crystals
+            currentChildren = document.getElementById('crystalIngredients').firstElementChild;
+            //check if ingredient div is not empty
+            if (currentChildren.innerHTML !== "") {
+                //array build
+                servedDrink.push([x]);
+                servedDrink[x][0] = "crystal";
+                servedDrink[x][1] = currentChildren.firstElementChild.id;
+                x += 1;
+                //json text build
+                jsonServedDrink += `,
+                            "crystal": "${currentChildren.firstElementChild.id}"`;
+
+            }
+            //now with ornaments
+            currentChildren = document.getElementById('ornamentIngredients').children;
+            for (let j = 0; j < currentChildren.length; j++) {
+                //check if ingredient div is not empty
+                if (currentChildren[j].innerHTML !== "") {
+                    //array build
+                    servedDrink.push([x]);
+                    servedDrink[x][0] = "ornament";
+                    servedDrink[x][1] = currentChildren[j].firstElementChild.id;
+                    x += 1;
+                    //json text build
+                    //if there is more than one ornament
+                    if (currentChildren.length > 1) {
+                        //first ornament treatment
+                        if (j == 0) {
+                            jsonServedDrink += `,
+                                                "ornament": [ "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                        //last ornament treatment
+                        else if (j == currentChildren.length - 1) {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}" ]`;
+                        }
+                        //else
+                        else {
+                            jsonServedDrink += `
+                                                "${currentChildren[j].firstElementChild.id}",`;
+                        }
+                    }
+                    //if there is only one ornament
+                    else {
+                        jsonServedDrink += `,
+                                            "ornament": "${currentChildren[j].firstElementChild.id}"`;
+                    }
+                }
+            }
+            //complete json text build
+            jsonServedDrink += `
+                        }`;
+            console.log(servedDrink.length);
+            console.log(jsonServedDrink);
+            //up to here we have what user submitted as servedDrink (2-dim array) and as 
+            //jsonServedDrink, so it can be added to file or sent to server as json object
+            //now we compare recipe with user submitted recipe and buil resultsModal content
+
+
+            for (let j = 0; j < recipes.length; j++) {
+                //find recipe for this servedDrink
+                if (recipes[j].name == currentDrink) {
+                    thisRecipe = recipes[j];
+                }
+            }
+            //this is resultsModal content html
+            resultsModalContentHTML = `
+                                        <div class="col-8">
+                                        <h4 class="mb-3">${currentDrink}</h4>
+                                        <ul>`;
+            
+            //this variables holds positive checks; this could be done with only one variable
+            //but chose to do it like this so we can have better stats later on
+            let baseChecks = 0, baseUnchecked = 0; 
+            let additionChecks = 0, additionUnchecked = 0;
+            let methodChecks = 0, methodUnchecked = 0;
+            let crystalChecks = 0, crystalUnchecked = 0;
+            let ornamentChecks = 0, ornamentUnchecked = 0;
+
+
+            //base elements check!
+            //validate if recipe has more than 1 base element
+            if (Array.isArray(thisRecipe.base) == true) {
+                console.log(thisRecipe.base.length);
+                //cycle through all bases in recipe[j]
+                for (let z = 0; z < thisRecipe.base.length; z++) {
+                    let ingredientChecked = false;
+                    //now we check presence of ingredient in servedDrink
+                    for (let w = 0; w < servedDrink.length; w++) {
+                        //check only base elements in servedDrink
+                        if (servedDrink[w][0] == "base") {
+                            //check if base is the same as thisRecipe.base[z]
+                            if (servedDrink[w][1] == thisRecipe.base[z]) {
+                                //if entered here, then recipe ingredient is found in servedDrink
+                                ingredientChecked = true;
+                            }
+                        }
+                    }
+                    //if ingredientChecked we modify resultsModal content with success
+                    if (ingredientChecked == true) {
+                        baseChecks += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.base[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                    //if ingredientChecked is false then we use danger
+                    else {
+                        baseUnchecked += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.base[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                }
+            }
+            //else, if recipes has only one base
+            else {
+                console.log("1");
+                //check presence of ingredient in servedDrink
+                for (let w = 0; w < servedDrink.length; w++) {
+                    //check only base elements in servedDrink
+                    if (servedDrink[w][0] == "base") {
+                        //check if base is the same as thisRecipe.base[z]
+                        if (servedDrink[w][1] == thisRecipe.base) {
+                            baseChecks += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.base).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                        else {
+                            baseUnchecked += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.base).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                    }
+                }
+            }
+
+            //addition elements check!
+            //validate if recipe has more than 1 addition element
+            if (Array.isArray(thisRecipe.addition) == true) {                
+                //cycle through all addition in recipe[j]
+                for (let z = 0; z < thisRecipe.addition.length; z++) {
+                    let ingredientChecked = false;
+                    //now we check presence of ingredient in servedDrink
+                    for (let w = 0; w < servedDrink.length; w++) {
+                        //check only addition elements in servedDrink
+                        if (servedDrink[w][0] == "addition") {
+                            //check if addition is the same as thisRecipe.addition[z]
+                            if (servedDrink[w][1] == thisRecipe.addition[z]) {
+                                //if entered here, then recipe ingredient is found in servedDrink
+                                ingredientChecked = true;
+                            }
+                        }
+                    }
+                    //if ingredientChecked we modify resultsModal content with success
+                    if (ingredientChecked == true) {
+                        additionChecks += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.addition[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                    //if ingredientChecked is false then we use danger
+                    else {
+                        additionUnchecked += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.addition[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                }
+            }
+            //else, if recipes has only one addition
+            else {
+                console.log("1");
+                //check presence of ingredient in servedDrink
+                for (let w = 0; w < servedDrink.length; w++) {
+                    //check only addition elements in servedDrink
+                    if (servedDrink[w][0] == "addition") {
+                        //check if addition is the same as thisRecipe.addition[z]
+                        if (servedDrink[w][1] == thisRecipe.addition) {
+                            additionChecks += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.addition).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                        else {
+                            additionUnchecked += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.addition).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                    }
+                }
+            }
+
+            //method element check
+            //first, get button value to print in modal
+            let methodButtonsDiv = document.getElementById('methodButtons').children;
+            let methodName;
+            for (let w = 0; w < methodButtonsDiv.length; w++) {
+                if (methodButtonsDiv[w].value == thisRecipe.method) {
+                    methodName = methodButtonsDiv[w].innerHTML;
+                }
+            }
+            //now we check presence of method in servedDrink
+            for (let w = 0; w < servedDrink.length; w++) {
+                //check only method element in servedDrink
+                if (servedDrink[w][0] == "method") {
+                    //check if method is the same as thisRecipe.method[z]
+                    if (servedDrink[w][1] == thisRecipe.method) {
+                        methodChecks += 1;
+                        //if entered here, then recipe ingredient is found in servedDrink
+                        resultsModalContentHTML += `
+                                                    <li>${methodName}  <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                    else {
+                        methodUnchecked += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${methodName}  <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                }
+            }
+
+            //now we check crystal in servedDrink
+            //check presence of ingredient in servedDrink
+            for (let w = 0; w < servedDrink.length; w++) {
+                //check only crystal elements in servedDrink
+                if (servedDrink[w][0] == "crystal") {
+                    //check if base is the same as thisRecipe.addition[z]
+                    if (servedDrink[w][1] == thisRecipe.crystal) {
+                        crystalChecks += 1;
+                        resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.crystal).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                    else {
+                        crystalUnchecked += 1;
+                        resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.crystal).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                }
+            }
+
+            //now we check ornaments
+            //validate if recipe has more than 1 ornament element
+            if (Array.isArray(thisRecipe.ornament) == true) {
+                //cycle through all ornaments in recipe[j]
+                for (let z = 0; z < thisRecipe.ornament.length; z++) {
+                    let ingredientChecked = false;
+                    //now we check presence of ingredient in servedDrink
+                    for (let w = 0; w < servedDrink.length; w++) {
+                        //check only ornaments elements in servedDrink
+                        if (servedDrink[w][0] == "ornament") {
+                            //check if addition is the same as thisRecipe.addition[z]
+                            if (servedDrink[w][1] == thisRecipe.ornament[z]) {
+                                //if entered here, then recipe ingredient is found in servedDrink
+                                ingredientChecked = true;
+                            }
+                        }
+                    }
+                    //if ingredientChecked we modify resultsModal content with success
+                    if (ingredientChecked == true) {
+                        ornamentChecks += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.ornament[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                    //if ingredientChecked is false then we use danger
+                    else {
+                        ornamentUnchecked += 1;
+                        resultsModalContentHTML += `
+                                                    <li>${document.getElementById(thisRecipe.ornament[z]).firstElementChild.nextElementSibling.innerHTML}   <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                    }
+                }
+            }
+            //else, if recipes has only one ornament
+            else {
+                console.log("1");
+                //check presence of ingredient in servedDrink
+                for (let w = 0; w < servedDrink.length; w++) {
+                    //check only ornament elements in servedDrink
+                    if (servedDrink[w][0] == "ornament") {
+                        //check if base is the same as thisRecipe.ornament[z]
+                        if (servedDrink[w][1] == thisRecipe.ornament) {
+                            ornamentChecks += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.ornament).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                        else {
+                            ornamentUnchecked += 1;
+                            resultsModalContentHTML += `
+                                                        <li>${document.getElementById(thisRecipe.ornament).firstElementChild.nextElementSibling.innerHTML}  <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>`;
+                        }
+                    }
+                }
+            }
+            //calculate total score
+            let score = baseChecks + additionChecks + methodChecks + crystalChecks + ornamentChecks;
+            let totalIngredients = score + baseUnchecked + additionUnchecked + methodUnchecked + crystalUnchecked + ornamentUnchecked;
+
+            console.log(score);
+            console.log(totalIngredients);
+            score /= totalIngredients;
+            console.log("score final: " + score);
+
+            //now we finish and update content in resultsModal
+            resultsModalContentHTML += `
+                                          </ul>
+                                        </div>
+                                        <div class="col-4 text-center my-auto">
+                                            <h4 class="mb-3">Resultado obtenido:</h4>
+                                            <h2>${score}</h2>
+                                        </div> `;
+            document.getElementById('resultsModal').parentElement.nextElementSibling.innerHTML = "";
+            document.getElementById('resultsModal').parentElement.nextElementSibling.innerHTML = resultsModalContentHTML;
+            //now we show results modal
+            $('#resultsCentralModal').modal('show');
+
+            //now we refresh inventory and load next recipe mixZone
+        }
+
+
+
+
+
+    };
+    xhttp.open("GET", "/JSON/cocktailRecipes.json", true);
+    xhttp.send();
 
 }
