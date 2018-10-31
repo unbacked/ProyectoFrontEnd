@@ -83,7 +83,6 @@ $('#inventoryItems').bind('wheel', function (e) {
 
 //handles when inventory item's drag starts
 function dragstartHandler(ev) {
-    console.log("dragStart");
     // Add this element's id to the drag payload so the drop handler will
     // know which element to add to its tree
     var dataList = ev.dataTransfer.items;
@@ -242,7 +241,6 @@ function testLogin(ev) {
     document.getElementById('loginDiv').hidden = false;
     //$('#loginDiv').show('fade');
 }
-
 
 //handles test start
 function startTest(ev) {
@@ -885,7 +883,7 @@ function refreshInventory() {
                     <p draggable="false">${inventoryItemsColl[i].name}</p></div>`
             }
             //we now input HTML in #inventoryItems div
-            //console.log(inventoryItemsHTML);
+            console.log(inventoryItemsHTML);
             $("#inventoryItems").html(inventoryItemsHTML);
         }
     };
