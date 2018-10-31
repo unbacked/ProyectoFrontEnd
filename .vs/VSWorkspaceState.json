@@ -1,15 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< HEAD
-=======
-    "\\css",
-    "\\css\\MDB",
-    "\\img",
->>>>>>> cocktailGame
-    "\\JS",
-    "\\JS\\MDB"
+    "\\js",
+    "\\json"
   ],
-  "SelectedNode": "\\css\\MDB",
+  "SelectedNode": "\\json\\inventoryItems.json",
   "PreviewInSolutionExplorer": false
 }

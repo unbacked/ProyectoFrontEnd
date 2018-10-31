@@ -332,7 +332,7 @@ function startTest(ev) {
             hintModal.firstElementChild.innerHTML = selectedRecipes[0].hint;
         }
     };
-    xhttp.open("GET", "/JSON/cocktailRecipes.json", true);
+    xhttp.open("GET", "/json/cocktailRecipes.json", true);
     xhttp.send();
 }
 
@@ -859,7 +859,7 @@ function serveDrink(ev) {
             }
         }
     };
-    xhttp.open("GET", "/JSON/cocktailRecipes.json", true);
+    xhttp.open("GET", "/json/cocktailRecipes.json", true);
     xhttp.send();
 
 }
@@ -889,7 +889,7 @@ function refreshInventory() {
             $("#inventoryItems").html(inventoryItemsHTML);
         }
     };
-    xhttp.open("GET", "/JSON/inventoryItems.json", true);
+    xhttp.open("GET", "/json/inventoryItems.json", true);
     xhttp.send();
 }
 
