@@ -1,0 +1,346 @@
+﻿/*@mixResultHeight: 300px;
+@mixResultWidth: 300px;*/
+@inventoryItemHeight: 100px;
+@inventoryItemWidth: 100px;
+@ingredientHeight: 100px;
+@ingredientWidth: 100px;
+@gameZoneHeight: 720px;
+@inventoryColor: rgb(151, 81, 14);
+@mixColor: black;
+@recipeColor: white;
+//for bootstrap
+//xl desktop 1200px and up
+//lg laptop 992px and up
+//md tablet 768px and up
+//sm landscape phone 576px and up
+//xs small phone less than 576px
+@phone: ~"only screen and (max-width: 576px)";
+@phoneToTablet: ~"only screen and (min-width: 577px) and (max-width: 959px)";
+@laptopAndUp: ~"only screen and (min-width: 992px)";
+
+
+@desktop: ~"only screen and (min-width: 960px) and (max-width: 1199px)";
+@tablet: ~"only screen and (min-width: 720px) and (max-width: 959px)";
+@cellPhone: ~"only screen and (max-width: 719px)";
+@lessThanTablet: ~"only screen and (max-width: 959px)";
+@methodBtnWidth: 80px;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #2E2E2E;
+}
+
+.container {
+    padding: 0;
+}
+
+#inventory {
+    padding: 0;
+    margin: 0;
+
+    select {
+        background-color: #d0d6e2;
+    }
+
+    #inventoryItems {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        /*background-color: darkgreen;*/
+        .inventoryItem {
+            height: @inventoryItemHeight;
+            min-width: @inventoryItemWidth;
+            max-width: @inventoryItemWidth;
+            margin: 20px;
+            display: block;
+            /*background-color: aqua;*/
+            img {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            p {
+                font-size: 0.75rem;
+                margin: 0;
+                padding: 0;
+                color: #d0d6e2;
+            }
+        }
+    }
+}
+
+.ingredientsDiv() {
+    /*border: 1px solid black;
+    overflow-x: hidden;
+    overflow-y: hidden;*/
+    flex-wrap: wrap;
+}
+
+.mixZoneTitleDiv() {
+    display: flex;
+}
+
+#testZone {
+    margin: 0;
+    padding: 0;
+    min-width: 300px;
+
+    #mixZone {
+        background-color: #1C2331;
+        padding: 0;
+        min-width: 287px;
+        /*@media @phone {
+            min-width: 100%;
+        }*/
+        h4 {
+            color: white;
+            text-align: center;
+            font-size: medium;
+
+            @media @laptopAndUp {
+                text-align: left;
+            }
+        }
+
+        #baseZone {
+            background-color: #1C2331;
+            padding: 10px;
+
+            #baseIngredients {
+                .ingredientsDiv();
+            }
+
+            #baseTitle {
+                padding: 10px 0;
+            }
+
+            @media @laptopAndUp {
+                display: flex;
+
+                #baseTitle {
+                    display: flex;
+                }
+            }
+        }
+
+        #additionZone {
+            background-color: #1C2331;
+            padding: 10px;
+
+            #additionIngredients {
+                .ingredientsDiv();
+            }
+
+            #additionTitle {
+                padding: 10px 0;
+            }
+
+            @media @laptopAndUp {
+                display: flex;
+
+                #additionTitle {
+                    display: flex;
+                }
+            }
+        }
+
+        #methodZone {
+            background-color: #1C2331;
+            padding: 20px 10px;
+
+            button {
+                margin: 10px;
+                /*font-size: smaller;*/
+                /*min-width: @methodBtnWidth;
+                max-width: @methodBtnWidth;*/
+            }
+
+            #methodTitle {
+                padding: 10px 0;
+            }
+
+
+            #methodButtons {
+                .ingredientsDiv();
+            }
+
+            @media @laptopAndUp {
+                display: flex;
+
+                #methodTitle {
+                    display: flex;
+                }
+            }
+        }
+
+        #ornamentZone {
+            background-color: #1C2331;
+            padding: 10px;
+
+            #ornamentIngredients {
+                .ingredientsDiv();
+            }
+
+
+            #ornamentTitle {
+                padding: 10px 0;
+            }
+
+            @media @laptopAndUp {
+                display: flex;
+
+                #ornamentTitle {
+                    display: flex;
+                }
+            }
+        }
+
+        #crystalZone {
+            background-color: #1C2331;
+            padding: 10px;
+
+            #crystalIngredients {
+                .ingredientsDiv();
+            }
+
+
+            #crystalTitle {
+                padding: 10px 0;
+            }
+
+            @media @laptopAndUp {
+                display: flex;
+
+                #crystalTitle {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    #testPanel {
+        background-color: #d0d6e2;
+        min-height: 300px;
+        font-size: small;
+
+
+
+        .card {
+            width: 100%;
+            background-color: #d0d6e2;
+            border: none;
+            box-shadow: none;
+
+            .card-header {
+                background-color: #212121;
+                color: white;
+                border-radius: 0;
+
+                h4{
+                    margin-bottom:0;
+                    font-size: medium;
+                }
+            }
+
+            th {
+                font-weight:bold;
+            }
+        }
+
+        p {
+            font-size: small;
+        }
+    }
+}
+
+.toReceiveDrop {
+    opacity: 0.2;
+}
+
+.ingredient {
+    min-height: @ingredientHeight;
+    min-width: @ingredientWidth;
+    max-height: @ingredientHeight;
+    max-width: @ingredientWidth;
+    overflow: hidden;
+    /*background-color: aqua;*/
+    margin: 10px;
+    border: 2px dashed #929fba;
+    color: #d0d6e2;
+    text-align: center;
+
+    .inventoryItem {
+        height: @inventoryItemHeight;
+        min-width: @inventoryItemWidth;
+        max-width: @inventoryItemWidth;
+        margin: auto;
+        display: block;
+        color: #d0d6e2;
+        /*background-color: aqua;*/
+        img {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 0.75rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+
+.modal-header {
+    background-color: #1C2331;
+    color: white;
+
+    span{
+        color:white;
+    }
+}
+
+
+
+
+
+
+
+
+/*.container {
+    padding: 0;
+
+    @media @lessThanTablet {
+        width: 100%;
+       
+    }
+}
+
+#gameZone {
+    padding: 0;
+    margin: 0;
+
+    #inventory {
+        height: @gameZoneHeight;
+        background-color: @inventoryColor;
+
+        @media @lessThanTablet {
+            height: auto;
+            background-color: yellow;
+        }
+    }
+
+    #mix {
+        height: @gameZoneHeight;
+        background-color: @mixColor;
+    }
+
+    #recipe {
+        height: @gameZoneHeight;
+        background-color: @recipeColor;
+    }
+}*/

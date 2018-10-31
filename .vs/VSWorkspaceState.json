@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+<<<<<<< HEAD
+=======
+    "\\css",
+    "\\css\\MDB",
+    "\\img",
+>>>>>>> cocktailGame
     "\\JS",
     "\\JS\\MDB"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\css\\MDB",
   "PreviewInSolutionExplorer": false
 }
