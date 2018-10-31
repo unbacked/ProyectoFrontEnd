@@ -1,14 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CSS",
-    "\\CSS\\MDB",
-    "\\IMG",
-    "\\IMG\\bases",
+    "\\css",
+    "\\css\\MDB",
+    "\\img",
     "\\JS",
-    "\\JSON",
-    "\\JS\\MDB",
-    "\\JS\\MDB\\modules"
+    "\\JS\\MDB"
   ],
+  "SelectedNode": "\\css\\MDB",
   "PreviewInSolutionExplorer": false
 }
