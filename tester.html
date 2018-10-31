@@ -108,51 +108,51 @@
             <div id="testPanel" class="col-lg-4 col-12 d-flex px-0">
                 <!-- div 1 start test -->
                 <div class="card pt-5">
-                    <button type="button" class="btn btn-dark mx-auto" onclick="startTest(event)">Start test</button>
+                    <button type="button" class="btn btn-dark mx-auto" onclick="testLogin(event)">Empezar test</button>
                 </div>
                 <!-- div 2 login -->
-                <div class="card" hidden="hidden">
+                <div id="loginDiv" class="card" hidden>
                     <div class="card-body">
                         <form class="text-center" action="/" method="post">
                             <div class="md-form">
                                 <input type="email" id="materialLoginFormEmail" name="userEmail" value="" class="form-control" />
                                 <label for="materialLoginFormEmail">Correo electrónico</label>
                             </div>
-                            <div class="md-form">
+                            <!--<div class="md-form">
                                 <input type="password" id="materialLoginFormPassword" name="userPassword" value="" class="form-control" />
                                 <label for="materialLoginFormPassword">Contraseña</label>
-                            </div>
-                            <div class="d-flex justify-content-around">
+                            </div>-->
+                            <!--<div class="d-flex justify-content-around">
                                 <div>
-                                    <!-- Remember me -->
+                                    Remember me
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
                                         <label class="form-check-label" for="materialLoginFormRemember">Recuérdame</label>
                                     </div>
                                 </div>
                                 <div>
-                                    <!-- Forgot password -->
+                                    Forgot password
                                     <a href="">¿Olvidaste tu contraseña?</a>
                                 </div>
-                            </div>
+                            </div>-->
                             <!-- Sign in button -->
-                            <button class="btn btn-dark btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Entrar</button>
-                            <!-- Register -->
+                            <button class="btn btn-dark btn-rounded btn-block my-4 waves-effect z-depth-0" type="button" onclick="startTest(event)">Entrar</button>
+                            <!--Register
                             <p>
                                 ¿No eres miembro aún?
                                 <a href="">Regístrate</a>
-                            </p>
+                            </p>-->
                         </form>
                     </div>
                 </div>
                 <!-- scenario 3 top div for this cocktail, bottom div for test data table -->
-                <div id="testResultsZone" hidden="true" class="w-100">
+                <div id="testResultsZone" hidden class="w-100">
                     <div id="currentRecipeCard" class="card text-center">
                         <div class="card-header">
-                            <h4></h4>
+                            <h2></h2>
                         </div>
                         <div class="card-body">
-                            <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#hintsCentralModal">Ver pistas</button>
+                            <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#hintsCentralModal" onclick="updateHintScore(event)">Ver pistas</button>
                             <button class="btn btn-success" onclick="serveDrink(event)" type="button">Servir trago</button>
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                     <div class="col-4 text-center my-auto">
                         <h4 class="mb-3">Resultado obtenido:</h4>
                         <h2>50%</h2>
-                    </div> 
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark dtn-sm" data-dismiss="modal">Continuar</button>
@@ -233,7 +233,58 @@
             </div>
         </div>
     </div>
+    <!-- testResultsModal -->
+    <div id="testResultsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="testResultTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="testResultTitle" class="modal-title w-100">Estos son tus resultados!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex">
+                    <div class="col-8">
+                        <div id="resultsTable" class="table-responsive text-nowrap">
+                            <table class="table">
+                                <!-- headings -->
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-left">Cocktail</th>
+                                        <th scope="col">Resultado</th>
+                                        <th scope="col">Pista</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsTableBody">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
+
+                        <h4 class="mb-3">Nombre del trago</h4>
+                        <ul>
+                            <li>Ingrediente 1   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>
+                            <li>Ingrediente 2   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>
+                            <li>Ingrediente 3   <span class="badge badge-danger"><i class="fa fa-times-circle" aria-hidden="true"></i></span></li>
+                            <li>Ingrediente 4   <span class="badge badge-success"><i class="fa fa-check-circle" aria-hidden="true"></i></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-4 text-center my-auto">
+                        <h4 class="mb-3">Resultado obtenido:</h4>
+                        <h2>50%</h2>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark dtn-sm" data-dismiss="modal">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jquery min -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
